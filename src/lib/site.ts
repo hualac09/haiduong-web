@@ -5,7 +5,7 @@ export const site = {
   title: "Hải Đường · Chuyên gia môi giới bất động sản cao cấp",
   description:
     "Anh Hải Đường, Founder Sunhomes Việt Nam, 10 năm môi giới penthouse, biệt thự tại Thủ Thiêm, Thảo Điền, Ba Son. Tư vấn mua bán BĐS cao cấp và Hải Đường Academy cho môi giới.",
-  url: (process.env.SITE_URL || "http://localhost:3000").replace(/\/$/, ""),
+  url: (process.env.SITE_URL || "https://haiduong.vn").replace(/\/$/, ""),
   company: "Sunhomes Việt Nam",
   phone: "0906968377",
   phoneDisplay: "090 6968 377",

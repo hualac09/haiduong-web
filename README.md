@@ -37,7 +37,7 @@ npm run dev                     # http://localhost:3000
 
 1. Đăng ký [SePay](https://sepay.vn), liên kết tài khoản ngân hàng nhận học phí.
 2. Trong SePay: **Cấu hình công ty → Cấu trúc mã thanh toán**, thêm tiền tố `HD`.
-3. **Tích hợp WebHooks → Thêm webhook**: sự kiện "Có tiền vào", URL `https://<tên-miền>/api/webhooks/sepay`, kiểu chứng thực **API Key**, dán giá trị `SEPAY_API_KEY` trong `.env`.
+3. **Tích hợp WebHooks → Thêm webhook**: sự kiện "Có tiền vào", URL `https://haiduong.vn/api/webhooks/sepay`, kiểu chứng thực **API Key**, dán giá trị `SEPAY_API_KEY` trong `.env`.
 4. Điền `BANK_BIN`, `BANK_ACCOUNT`, `BANK_ACCOUNT_NAME` để trang thanh toán hiện đúng mã VietQR. Mã BIN thường gặp: Vietcombank 970436, Techcombank 970407, MB 970422, ACB 970416.
 
 Mỗi đơn có mã dạng `HDXXXXXX`. Khách chuyển khoản đúng nội dung thì đơn tự chuyển "Đã thanh toán", trang thanh toán tự cập nhật, và bạn nhận tin Telegram. Khách chuyển sai nội dung thì xác nhận tay trong `/admin/don-hang`.
@@ -63,7 +63,7 @@ Yêu cầu: VPS Ubuntu 22.04 hoặc 24.04, tên miền đã trỏ bản ghi A (c
 ```bash
 ssh root@<ip-vps>
 curl -fsSL https://raw.githubusercontent.com/<tai-khoan>/haiduong-web/main/deploy/setup-vps.sh -o setup-vps.sh
-DOMAIN=<ten-mien> REPO=git@github.com:<tai-khoan>/haiduong-web.git EMAIL=<email> bash setup-vps.sh
+DOMAIN=haiduong.vn REPO=git@github.com:<tai-khoan>/haiduong-web.git EMAIL=hualac09@gmail.com bash setup-vps.sh
 ```
 
 Nếu repo để riêng tư, tải `setup-vps.sh` bằng cách khác (ví dụ `scp` từ máy bạn) vì `raw.githubusercontent.com` cần quyền truy cập.
@@ -92,4 +92,5 @@ Database và ảnh tải lên nằm ở `/var/www/haiduong/data`, ngoài thư m�
 - [ ] Đọc lại trang `/gioi-thieu` và xác nhận từng chi tiết tiểu sử.
 - [ ] Cập nhật tình trạng từng căn (đang bán / đã giao dịch) trong admin. Hiện tất cả để "Đã giới thiệu" vì chưa có thông tin tình trạng thực tế.
 - [ ] Thêm lời chứng thực thật của khách và học viên khi có.
-- [ ] Kiểm tra tên miền `nguyenhaiduong.com`: hiện đang mở ra một trang khác ("sanphamcongnghe").
+- [ ] Tên miền `haiduong.vn` (28/10/2026) chưa có bản ghi A và đang nằm trên máy chủ tên miền của VNNIC (`dns-servers.vn`). Kiểm tra với nhà đăng ký rằng tên miền đứng tên bạn và đang hoạt động, rồi trỏ `@` và `www` về IP của VPS.
+- [ ] `nguyenhaiduong.com` (ghi trên YouTube, Instagram, Beacons) đang mở ra một trang khác ("sanphamcongnghe"); nên đổi các liên kết đó sang haiduong.vn khi site chạy.
