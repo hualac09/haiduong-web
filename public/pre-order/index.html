@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hải Đường Academy Pre-order</title>
+<meta name="description" content="Hai khóa học 6 tuần cho môi giới bất động sản: Thương hiệu cá nhân và Bán BĐS cao cấp, học cùng anh Hải Đường – Founder Sunhomes Việt Nam. Pre-order từ 3.000.000đ, khai giảng 01/12/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a river-at-dusk palette; hero pairs the promise with a listing sheet from a real deal; one 1120px column; pricing as three equal cards on a deep band */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --ink:#0f1f1b; --muted:#56655f; --line:#d5ddd8;
+  --deep:#123a33; --deep-ink:#eef3ef; --brass:#9a7330; --brass-ink:#ffffff; --brass-soft:#efe4cf; --danger:#b3261e;
+  --display:"Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --body:"Be Vietnam Pro", "Segoe UI", Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1714; --surface:#13221e; --ink:#e8efeb; --muted:#9db0a8; --line:#284039;
+  --deep:#0a2a24; --deep-ink:#e8efeb; --brass:#d2ac62; --brass-ink:#1a1408; --brass-soft:#2c271b; --danger:#f2b8b5; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1714; --surface:#13221e; --ink:#e8efeb; --muted:#9db0a8; --line:#284039;
+  --deep:#0a2a24; --deep-ink:#e8efeb; --brass:#d2ac62; --brass-ink:#1a1408; --brass-soft:#2c271b; --danger:#f2b8b5; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(40px,6.4vw,76px)}
+h2{font-size:clamp(32px,4.4vw,50px)}
+h3{font-size:28px}
+p{margin:0}
+a{color:inherit}
+h1,h2,h3,.sheet dd,.stat b,.plan .price,.deal .price,.count b,.sum b,.seal,.pain i{font-variant-numeric:lining-nums tabular-nums}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--brass);background:var(--brass);color:var(--brass-ink);font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:.01em;text-decoration:none}
+.brand span{color:var(--brass)}
+header nav{display:flex;align-items:center;gap:20px;font-size:14px}
+header nav a.link{text-decoration:none;color:var(--muted)}
+header nav a.link:hover{color:var(--ink)}
+header .btn{min-height:40px;padding:0 18px;font-size:14px}
+section{padding-block:72px}
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+.hero .lead{font-size:18px;color:var(--muted);max-width:56ch;margin-top:20px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .note{font-size:14px;color:var(--muted);margin-top:14px}
+.hero .note b{color:var(--ink)}
+.sheet{background:var(--deep);color:var(--deep-ink);border-radius:20px;padding:28px;min-width:0}
+.sheet .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.sheet h3{color:var(--deep-ink);margin-top:10px;font-size:30px}
+.sheet dl{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin:22px 0 0}
+.sheet dt{font-size:12px;opacity:.7}
+.sheet dd{margin:2px 0 0;font-family:var(--display);font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.sheet .foot{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;opacity:.9}
+.sheet .foot a{color:var(--brass);font-weight:600}
+.stats{border-block:1px solid var(--line);padding-block:28px}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat b{display:block;font-family:var(--display);font-size:40px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.head{max-width:720px;display:grid;gap:14px;margin-bottom:40px}
+.head p{color:var(--muted);font-size:17px}
+.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 40px}
+.pain{display:grid;grid-template-columns:auto 1fr;gap:14px;padding-block:18px;border-top:1px solid var(--line)}
+.pain i{font-style:normal;font-family:var(--display);font-size:22px;color:var(--brass);line-height:1.3;min-width:24px}
+.pain b{display:block;font-weight:600}
+.pain p{color:var(--muted);font-size:15px}
+.mentor .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,var(--deep),var(--brass));display:grid;place-items:center}
+.portrait .mono{font-family:var(--display);font-size:120px;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.02em}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mentor ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.mentor li{padding-left:22px;position:relative}
+.mentor li::before{content:"";position:absolute;left:0;top:.8em;width:10px;height:1px;background:var(--brass)}
+.channels{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.channels a{font-size:14px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.channels a:hover{border-color:var(--brass)}
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.course{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.course .k{font-size:13px;font-weight:600;color:var(--brass)}
+.course .out{background:var(--brass-soft);border-radius:12px;padding:14px 16px;font-size:15px}
+.weeks{list-style:none;margin:0;padding:0}
+.weeks li{display:grid;grid-template-columns:72px 1fr;gap:12px;padding-block:10px;border-top:1px solid var(--line);font-size:15px}
+.weeks li span{color:var(--muted);font-size:13px;font-weight:600;padding-top:2px}
+.course .who{font-size:14px;color:var(--muted)}
+.deals{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.deal{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;min-width:0;transition:border-color .15s ease}
+.deal:hover{border-color:var(--brass)}
+.deal .thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(150deg,var(--deep),#2d5a50);display:flex;align-items:flex-end;padding:14px}
+.deal .thumb.has-img .price{display:none}
+.deal .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.deal .price{position:relative;font-family:var(--display);font-size:34px;font-weight:600;color:#fff;line-height:1;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.deal .body{padding:16px;display:grid;gap:6px}
+.deal .body b{font-weight:600;font-size:15px;line-height:1.4}
+.deal .body span{font-size:13px;color:var(--muted)}
+.pricing{background:var(--deep);color:var(--deep-ink)}
+.pricing .head p{color:var(--deep-ink);opacity:.8}
+.wave{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-bottom:28px}
+.wave .now{font-weight:600}
+.count{display:flex;gap:8px;font-variant-numeric:tabular-nums}
+.count div{background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;text-align:center;min-width:60px}
+.count b{display:block;font-family:var(--display);font-size:26px;line-height:1}
+.count small{font-size:11px;opacity:.75}
+.slots{font-size:14px;background:var(--brass);color:var(--brass-ink);border-radius:999px;padding:4px 12px;font-weight:600}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{background:var(--surface);color:var(--ink);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;border:2px solid transparent;min-width:0}
+.plan.best{border-color:var(--brass)}
+.plan .badge{align-self:flex-start;font-size:12px;font-weight:600;background:var(--brass);color:var(--brass-ink);border-radius:999px;padding:4px 12px}
+.plan .price{font-family:var(--display);font-size:44px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.plan .was{font-size:14px;color:var(--muted)}
+.plan .save{font-size:13px;font-weight:600;color:var(--brass)}
+.plan ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px;flex:1}
+.plan .btn{width:100%}
+.ladder{margin-top:28px;overflow-x:auto}
+.ladder table{width:100%;min-width:560px;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.ladder th,.ladder td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.14)}
+.ladder th{font-weight:600;opacity:.75;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ladder tr.on td{color:var(--brass);font-weight:600}
+.ladder tr.past td{opacity:.45;text-decoration:line-through}
+.fine{margin-top:20px;font-size:14px;opacity:.8}
+.guarantee{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:40px}
+.seal{width:84px;height:84px;border-radius:50%;border:2px solid var(--brass);display:grid;place-items:center;font-family:var(--display);font-size:30px;font-weight:700;color:var(--brass)}
+details{border-top:1px solid var(--line);padding-block:16px}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--brass);font-size:20px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);margin-top:10px;max-width:70ch}
+.signup .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.signup ol{margin:20px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--muted)}
+form{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:grid;gap:16px;min-width:0}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select{font:400 16px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;min-height:48px;padding:0 14px;width:100%}
+.err{color:var(--danger);font-size:13px;min-height:1em}
+.sum{display:flex;justify-content:space-between;gap:12px;font-size:15px;border-top:1px solid var(--line);padding-top:14px}
+.sum b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.consent{font-size:12px;color:var(--muted);font-weight:400}
+.done{display:grid;gap:14px;background:var(--brass-soft);border-radius:16px;padding:20px;font-size:15px}
+.done h3{font-size:26px}
+.done .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.done .code{font-variant-numeric:tabular-nums;font-weight:700;user-select:all;background:var(--surface);border-radius:8px;padding:4px 10px}
+.done img{width:220px;max-width:100%;border-radius:12px;background:#fff}
+.done .preview{font-size:12px;color:var(--muted)}
+.contact{margin-top:20px;font-size:15px;color:var(--muted)}
+.contact b{color:var(--ink);font-variant-numeric:tabular-nums;user-select:all}
+.copy{font:600 13px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+footer{border-top:1px solid var(--line);padding-block:28px 96px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);transform:translateY(110%);transition:transform .2s ease}
+.bar.show{transform:none}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
+.bar p{font-size:13px;color:var(--muted);line-height:1.3}
+.bar p b{display:block;color:var(--ink);font-size:16px;font-variant-numeric:tabular-nums}
+.bar .btn{min-height:44px;padding:0 18px;white-space:nowrap}
+@media (max-width:880px){
+  .hero .wrap,.mentor .wrap,.signup .wrap,.courses{grid-template-columns:1fr}
+  .plans,.deals{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .pains{grid-template-columns:1fr}
+  .portrait{aspect-ratio:16/11}
+  section{padding-block:56px}
+  header nav a.link{display:none}
+}
+@media (min-width:881px){.bar{display:none}}
+@media (max-width:420px){.guarantee{grid-template-columns:1fr}.count div{min-width:52px}.weeks li{grid-template-columns:60px 1fr}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+<meta property="og:title" content="Hải Đường Academy – Học bán BĐS cao cấp">
+<meta property="og:description" content="Hai khóa 6 tuần: Thương hiệu cá nhân và Bán BĐS cao cấp. Pre-order từ 3.000.000đ, khai giảng 01/12/2026.">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Hải Đường <span>Academy</span></a>
+    <nav>
+      <a class="link" href="#khoa-hoc">Khóa học</a>
+      <a class="link" href="#hoc-phi">Học phí</a>
+      <a class="link" href="#hoi-dap">Hỏi đáp</a>
+      <a class="btn" href="#dang-ky">Giữ chỗ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pre-order · Khai giảng 01/12/2026</p>
+        <h1 style="margin-top:14px">Học bán bất động sản cao cấp từ người đang bán những căn 50–200 tỷ</h1>
+        <p class="lead">Hai khóa học 6 tuần cho môi giới muốn có khách tự tìm đến và đủ tự tin chốt những giao dịch lớn. Học online, live mỗi tuần với anh Hải Đường, bài tập làm ngay trên công việc thật.</p>
+        <div class="actions">
+          <a class="btn" href="#hoc-phi">Xem học phí đợt hiện tại</a>
+          <a class="btn ghost" href="#khoa-hoc">Nội dung 2 khóa</a>
+        </div>
+        <p class="note" id="heroNote">Học phí tăng sau mỗi đợt pre-order.</p>
+      </div>
+      <aside class="sheet" aria-label="Ví dụ căn hộ được phân tích trong khóa">
+        <p class="tag">Case study trong khóa</p>
+        <h3>Penthouse Zeit River, Thủ Thiêm</h3>
+        <dl>
+          <div><dt>Diện tích</dt><dd>392 m²</dd></div>
+          <div><dt>Giá chào</dt><dd>149 tỷ</dd></div>
+          <div><dt>Tầm nhìn</dt><dd style="font-size:20px">Skyline TP.HCM</dd></div>
+          <div><dt>Quy đổi</dt><dd style="font-size:20px">~5,7 triệu USD</dd></div>
+        </dl>
+        <p class="foot">Mỗi tuần mổ xẻ một căn có thật trên kênh của anh Đường: tìm khách ở đâu, dẫn xem thế nào, nói giá ra sao. <a href="https://www.youtube.com/watch?v=HgFFSDJ5zBk" target="_blank" rel="noopener">Xem video căn này</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b>40,6K</b><span>người đăng ký YouTube</span></div>
+      <div class="stat"><b>774K</b><span>lượt thích TikTok</span></div>
+      <div class="stat"><b>655</b><span>video căn hộ, biệt thự cao cấp</span></div>
+      <div class="stat"><b>560 tỷ</b><span>căn đắt nhất anh Đường từng giới thiệu</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Bạn có đang gặp</p>
+        <h2>Bốn lý do môi giới giỏi vẫn chưa lên được phân khúc cao cấp</h2>
+      </div>
+      <div class="pains">
+        <div class="pain"><i>i</i><div><b>Không có khách tự tìm đến</b><p>Phụ thuộc quảng cáo và data mua, chi phí mỗi khách ngày càng cao.</p></div></div>
+        <div class="pain"><i>ii</i><div><b>Có kênh nhưng không ra khách</b><p>Đăng đều mà lượt xem thấp, người xem không nhắn tin hỏi mua.</p></div></div>
+        <div class="pain"><i>iii</i><div><b>Gặp khách giàu thì run</b><p>Không biết họ quan tâm gì ngoài căn nhà, nói giá 100 tỷ thấy ngập ngừng.</p></div></div>
+        <div class="pain"><i>iv</i><div><b>Không thấy lộ trình sự nghiệp</b><p>Làm nhiều năm vẫn bán phân khúc cũ, chưa biết đường lên trưởng nhóm, founder.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mentor">
+    <div class="wrap">
+      <div class="portrait" id="portrait"><span class="mono" aria-hidden="true">HĐ</span></div>
+      <div>
+        <p class="eyebrow">Người dạy</p>
+        <h2 style="margin-top:12px">Nguyễn Hải Đường</h2>
+        <p style="margin-top:16px;color:var(--muted);font-size:17px">Founder Sunhomes Việt Nam, công ty môi giới bất động sản cao cấp. Anh vẫn trực tiếp dẫn khách xem penthouse, duplex, biệt thự ở Thủ Thiêm, Thảo Điền, Ba Son và quay lại toàn bộ trên kênh của mình.</p>
+        <ul>
+          <li>Hơn 650 video giới thiệu căn hộ cao cấp, nhiều video có tiêu đề song ngữ cho khách nước ngoài</li>
+          <li>Đã giới thiệu những căn từ vài chục tỷ đến biệt thự 560 tỷ tại Vinhomes Golden River Ba Son</li>
+          <li>Đang xây đội môi giới riêng: học viên xuất sắc được ưu tiên ứng tuyển Sunhomes</li>
+        </ul>
+        <div class="channels">
+          <a href="https://www.youtube.com/@haiduongvillas" target="_blank" rel="noopener">YouTube @haiduongvillas</a>
+          <a href="https://www.tiktok.com/@haiduongsunhomes" target="_blank" rel="noopener">TikTok @haiduongsunhomes</a>
+          <a href="https://www.facebook.com/haiduongland27/" target="_blank" rel="noopener">Facebook Hải Đường</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="khoa-hoc">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Hai khóa · 6 tuần · Live mỗi tuần</p>
+        <h2>Khóa 1 mang khách đến. Khóa 2 biến khách thành deal lớn.</h2>
+        <p>Video mở theo tuần, mỗi tuần 1 buổi live Zoom 20h với anh Đường, có bản ghi xem lại 12 tháng.</p>
+      </div>
+      <div class="courses">
+        <article class="course">
+          <p class="k">Khóa 1 · Thương hiệu cá nhân</p>
+          <h3>Personal Brand Pro – Khách tự tìm đến</h3>
+          <p class="who">Dành cho môi giới 0–5 năm, chưa có kênh hoặc kênh chưa ra khách.</p>
+          <p class="out"><b>Sau 6 tuần:</b> kênh chuẩn trên 2 nền tảng, 30 video đã đăng, một phễu thu khách qua Zalo đang chạy.</p>
+          <ol class="weeks">
+            <li><span>Tuần 1</span>Định vị: chọn phân khúc, chân dung khách, câu chuyện cá nhân</li>
+            <li><span>Tuần 2</span>Hồ sơ và hình ảnh trên 4 kênh</li>
+            <li><span>Tuần 3</span>Hệ nội dung, 30 ý tưởng, hook 3 giây, kịch bản 60 giây</li>
+            <li><span>Tuần 4</span>Quay bằng điện thoại, CapCut, AI viết kịch bản</li>
+            <li><span>Tuần 5</span>Thuật toán TikTok, YouTube, Facebook, livestream</li>
+            <li><span>Tuần 6</span>Từ người xem thành khách: Zalo OA, chăm sóc, đo lường</li>
+          </ol>
+        </article>
+        <article class="course">
+          <p class="k">Khóa 2 · Bán hàng cao cấp &amp; sự nghiệp</p>
+          <h3>Luxury Closer – Chốt deal 20–200 tỷ</h3>
+          <p class="who">Dành cho môi giới từ 1 năm muốn lên phân khúc cao cấp, và trưởng nhóm.</p>
+          <p class="out"><b>Sau 6 tuần:</b> hồ sơ 20 khách VIP tiềm năng, bộ kịch bản tư vấn cao cấp, kế hoạch sự nghiệp 3 năm.</p>
+          <ol class="weeks">
+            <li><span>Tuần 1</span>Thế giới khách giàu: HNWI, khách nước ngoài, nhà đầu tư</li>
+            <li><span>Tuần 2</span>Nguồn khách cao cấp: giới thiệu, private banking, xe sang, golf</li>
+            <li><span>Tuần 3</span>Đọc dự án, định giá penthouse, pháp lý người nước ngoài</li>
+            <li><span>Tuần 4</span>Dẫn xem nhà, quay tour, trình bày giá 50–200 tỷ</li>
+            <li><span>Tuần 5</span>Đàm phán, xử lý từ chối, đặt cọc, hậu mãi</li>
+            <li><span>Tuần 6</span>Lộ trình: môi giới → chuyên gia → trưởng nhóm → founder</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Học từ deal thật</p>
+        <h2>Những căn anh Đường đã trực tiếp giới thiệu</h2>
+        <p>Các video này là tư liệu học trong khóa: vì sao khách giàu quan tâm, cách dẫn xem và cách nói giá.</p>
+      </div>
+      <div class="deals">
+        <a class="deal" href="https://www.youtube.com/watch?v=ASN0_1hxNEE" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/ASN0_1hxNEE/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">560 tỷ</span></div><div class="body"><b>Biệt thự Vinhomes Golden River Ba Son</b><span>Quận 1 · YouTube</span></div></a>
+        <a class="deal" href="https://www.youtube.com/watch?v=rjCOJFgHozs" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/rjCOJFgHozs/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">250 tỷ</span></div><div class="body"><b>Penthouse The Opera Thủ Thiêm</b><span>Thủ Thiêm · YouTube</span></div></a>
+        <a class="deal" href="https://www.youtube.com/watch?v=1ZWrRlwYua0" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/1ZWrRlwYua0/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">205 tỷ</span></div><div class="body"><b>Penthouse Define Quận 2</b><span>Thủ Đức · YouTube</span></div></a>
+        <a class="deal" href="https://www.youtube.com/watch?v=HgFFSDJ5zBk" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/HgFFSDJ5zBk/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">149 tỷ</span></div><div class="body"><b>Penthouse Zeit River, 392 m²</b><span>Thủ Thiêm · YouTube</span></div></a>
+        <a class="deal" href="https://www.youtube.com/watch?v=LOp41yAgoac" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/LOp41yAgoac/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">120 tỷ</span></div><div class="body"><b>Pool Villa The River Thủ Thiêm</b><span>Thủ Thiêm · YouTube</span></div></a>
+        <a class="deal" href="https://www.youtube.com/watch?v=KgMHE_Lw15Q" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/KgMHE_Lw15Q/hqdefault.jpg" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="price">118 tỷ</span></div><div class="body"><b>Penthouse Gateway Thảo Điền</b><span>Thảo Điền · YouTube</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="hoc-phi">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Học phí pre-order</p>
+        <h2 style="color:var(--deep-ink)">Đăng ký càng sớm, học phí càng thấp</h2>
+        <p>Giá tăng sau mỗi đợt. Giữ chỗ chỉ cần đặt cọc 1.000.000đ, thanh toán phần còn lại trước 28/11.</p>
+      </div>
+      <div class="wave">
+        <p class="now" id="waveName">Đợt 1 · Founding member</p>
+        <div class="count" id="count" aria-live="polite">
+          <div><b id="cd-d">0</b><small>ngày</small></div>
+          <div><b id="cd-h">0</b><small>giờ</small></div>
+          <div><b id="cd-m">0</b><small>phút</small></div>
+        </div>
+        <p id="waveEnd" style="font-size:14px;opacity:.8"></p>
+        <span class="slots" id="slots" hidden></span>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Khóa 1</h3>
+          <p class="was">Personal Brand Pro</p>
+          <p class="price" data-plan="k1">3.000.000đ</p>
+          <p class="was">Giá chính thức <s>4.900.000đ</s></p>
+          <p class="save" data-save="k1"></p>
+          <ul><li>6 tuần video + 6 buổi live</li><li>Chấm kênh trực tiếp</li><li>30 kịch bản video mẫu</li></ul>
+          <a class="btn ghost" href="#dang-ky" data-pick="k1">Chọn Khóa 1</a>
+        </article>
+        <article class="plan best">
+          <span class="badge">Được chọn nhiều nhất</span>
+          <h3>Combo 1 + 2</h3>
+          <p class="was">Thương hiệu + Bán hàng cao cấp</p>
+          <p class="price" data-plan="combo">6.900.000đ</p>
+          <p class="was">Giá chính thức <s>9.900.000đ</s></p>
+          <p class="save" data-save="combo"></p>
+          <ul><li>Toàn bộ 2 khóa, 12 buổi live</li><li>Rẻ hơn mua lẻ từ 1,5 triệu</li><li id="founderPerk">Buổi hỏi đáp riêng nhóm Founding member</li></ul>
+          <a class="btn" href="#dang-ky" data-pick="combo">Chọn Combo</a>
+        </article>
+        <article class="plan">
+          <h3>Khóa 2</h3>
+          <p class="was">Luxury Closer</p>
+          <p class="price" data-plan="k2">4.500.000đ</p>
+          <p class="was">Giá chính thức <s>6.900.000đ</s></p>
+          <p class="save" data-save="k2"></p>
+          <ul><li>6 tuần video + 6 buổi live</li><li>Kịch bản Việt – Anh cho khách nước ngoài</li><li>Ưu tiên ứng tuyển Sunhomes</li></ul>
+          <a class="btn ghost" href="#dang-ky" data-pick="k2">Chọn Khóa 2</a>
+        </article>
+      </div>
+      <div class="ladder">
+        <table>
+          <thead><tr><th>Đợt</th><th>Thời gian</th><th>Khóa 1</th><th>Khóa 2</th><th>Combo</th></tr></thead>
+          <tbody id="ladder">
+            <tr data-i="0"><td>Đợt 1 · Founding member (30 suất)</td><td>01/11 – 05/11</td><td>3.000.000đ</td><td>4.500.000đ</td><td>6.900.000đ</td></tr>
+            <tr data-i="1"><td>Đợt 2 · Early bird</td><td>06/11 – 15/11</td><td>3.500.000đ</td><td>5.500.000đ</td><td>7.900.000đ</td></tr>
+            <tr data-i="2"><td>Đợt 3 · Last call</td><td>16/11 – 28/11</td><td>3.900.000đ</td><td>5.900.000đ</td><td>8.900.000đ</td></tr>
+            <tr data-i="3"><td>Giá chính thức</td><td>Từ 01/12</td><td>4.900.000đ</td><td>6.900.000đ</td><td>9.900.000đ</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Đăng ký nhóm từ 5 người cùng sàn hoặc cùng đội: giảm thêm 10% so với giá đợt hiện tại. Có vé workshop 199.000đ: được trừ vào học phí.</p>
+    </div>
+  </section>
+
+  <section id="hoi-dap">
+    <div class="wrap">
+      <div class="guarantee">
+        <div class="seal">7</div>
+        <div>
+          <h3>Hoàn 100% học phí trong 7 ngày đầu</h3>
+          <p style="color:var(--muted);margin-top:8px">Học tuần đầu, làm bài tập tuần 1. Nếu thấy không phù hợp, nhắn cho đội ngũ trong 7 ngày kể từ khai giảng để được hoàn toàn bộ học phí. Khóa học không cam kết thu nhập; kết quả phụ thuộc vào việc bạn áp dụng.</p>
+        </div>
+      </div>
+      <div class="head" style="margin-bottom:16px"><h2>Câu hỏi thường gặp</h2></div>
+      <details><summary>Tôi bận đi dẫn khách, có theo kịp không?</summary><p>Mỗi tuần khoảng 3 giờ: 1 giờ video, 1,5 giờ live buổi tối và bài tập làm ngay trong công việc. Mọi buổi live đều có bản ghi, xem lại trong 12 tháng.</p></details>
+      <details><summary>Tôi chưa từng bán căn cao cấp, có nên học Khóa 2?</summary><p>Có. Khóa 2 thiết kế cho người muốn chuyển lên phân khúc cao cấp. Nếu bạn chưa có kênh cá nhân, nên chọn Combo để có cả nguồn khách lẫn kỹ năng chốt.</p></details>
+      <details><summary>Khóa học có cấp chứng chỉ hành nghề môi giới không?</summary><p>Không. Đây là khóa kỹ năng; học viên hoàn thành từ 80% bài tập nhận giấy chứng nhận hoàn thành của Hải Đường Academy.</p></details>
+      <details><summary>Học ở đâu, bằng gì?</summary><p>Video học trên nền tảng khóa học online, live qua Zoom lúc 20h mỗi tuần, trao đổi trong nhóm Zalo riêng của khóa.</p></details>
+      <details><summary>Đăng ký theo nhóm có ưu đãi không?</summary><p>Từ 5 học viên cùng sàn hoặc cùng đội được giảm thêm 10% so với giá đợt hiện tại. Trưởng nhóm điền form và ghi chú số người, đội ngũ sẽ gọi lại.</p></details>
+      <details><summary>Thanh toán thế nào?</summary><p>Chuyển khoản qua mã VietQR. Bạn có thể đặt cọc 1.000.000đ để giữ giá đợt hiện tại, thanh toán phần còn lại trước 28/11. Hóa đơn được gửi qua Zalo sau khi xác nhận.</p></details>
+    </div>
+  </section>
+
+  <section class="signup" id="dang-ky" style="padding-top:0">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Giữ chỗ</p>
+        <h2 style="margin-top:12px">Giữ học phí đợt hiện tại trong 2 phút</h2>
+        <ol>
+          <li>Điền form bên cạnh.</li>
+          <li>Đặt cọc 1.000.000đ hoặc thanh toán toàn bộ qua mã VietQR.</li>
+          <li>Đội ngũ xác nhận và thêm bạn vào nhóm Zalo của khóa trong 2 giờ làm việc.</li>
+        </ol>
+        <p class="contact">Cần tư vấn trước? Hotline / Zalo: <b id="phoneText">090 696 8377</b> <button class="copy" type="button" id="copyPhone">Sao chép số</button></p>
+      </div>
+      <form id="f" novalidate>
+        <label for="name">Họ và tên<input id="name" name="name" autocomplete="name" required></label>
+        <label for="phone">Số Zalo<input id="phone" name="phone" inputmode="tel" autocomplete="tel" required></label>
+        <label for="plan">Gói đăng ký
+          <select id="plan" name="plan">
+            <option value="combo">Combo Khóa 1 + 2</option>
+            <option value="k1">Khóa 1 – Personal Brand Pro</option>
+            <option value="k2">Khóa 2 – Luxury Closer</option>
+          </select>
+        </label>
+        <label for="seg">Bạn đang bán phân khúc
+          <select id="seg" name="seg"><option>Căn hộ trung cấp</option><option>Cao cấp / hạng sang</option><option>Đất nền, nhà phố</option><option>Chưa làm môi giới</option></select>
+        </label>
+        <label for="pay">Hình thức
+          <select id="pay" name="pay"><option value="deposit">Đặt cọc 1.000.000đ giữ giá</option><option value="full">Thanh toán toàn bộ</option></select>
+        </label>
+        <div class="sum"><span id="sumLabel">Học phí đợt hiện tại</span><b id="sumPrice">6.900.000đ</b></div>
+        <p class="consent">Bằng việc gửi form, bạn đồng ý để Hải Đường Academy liên hệ qua Zalo/điện thoại về khóa học. Thông tin không được chia sẻ cho bên thứ ba.</p>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn" type="submit" id="submitBtn">Giữ chỗ giá pre-order</button>
+      </form>
+      <div class="done" id="done" hidden></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Hải Đường Academy · Sunhomes Việt Nam</span><span>Khóa học kỹ năng, không thay thế chứng chỉ hành nghề môi giới.</span></div></footer>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div class="wrap">
+    <p><span id="barWave">Đợt 1</span><b id="barPrice">Combo 6.900.000đ</b></p>
+    <a class="btn" href="#dang-ky" tabindex="-1">Giữ chỗ</a>
+  </div>
+</div>
+
+<script>
+/* ===== CẤU HÌNH – sửa các giá trị này trước khi chạy thật ===== */
+var CONFIG = {
+  SHEET_URL: "",            // URL Web App của Google Apps Script (xem HUONG-DAN.md). Để trống = chưa lưu đăng ký.
+  ZALO_PHONE: "0906968377", // Số Zalo nhận đăng ký
+  BANK_BIN: "",             // Mã BIN ngân hàng cho VietQR, ví dụ 970436 (Vietcombank)
+  BANK_ACCOUNT: "",         // Số tài khoản nhận học phí
+  BANK_NAME: "",            // Tên chủ tài khoản, viết HOA không dấu
+  FOUNDING_SLOTS_LEFT: 30,  // Số suất Founding member còn lại, cập nhật thủ công
+  PHOTO_URL: "",            // Link ảnh chân dung anh Hải Đường (tỷ lệ 4:5)
+  DEPOSIT: 1000000
+};
+/* ============================================================ */
+(function(){
+  var waves=[
+    {name:"Đợt 1 · Founding member", short:"Đợt 1", open:"2026-11-01T00:00:00+07:00", end:"2026-11-05T23:59:59+07:00", k1:3000000, k2:4500000, combo:6900000},
+    {name:"Đợt 2 · Early bird", short:"Đợt 2", end:"2026-11-15T23:59:59+07:00", k1:3500000, k2:5500000, combo:7900000},
+    {name:"Đợt 3 · Last call", short:"Đợt 3", end:"2026-11-28T23:59:59+07:00", k1:3900000, k2:5900000, combo:8900000},
+    {name:"Giá chính thức", short:"Giá chính thức", end:null, k1:4900000, k2:6900000, combo:9900000}
+  ];
+  var official={k1:4900000,k2:6900000,combo:9900000};
+  var planName={combo:"Combo Khóa 1 + 2",k1:"Khóa 1 – Personal Brand Pro",k2:"Khóa 2 – Luxury Closer"};
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return n.toLocaleString("vi-VN")+"đ"};
+  function waveIndex(now){for(var i=0;i<waves.length;i++){if(!waves[i].end||now<=Date.parse(waves[i].end))return i}return waves.length-1}
+  function state(){var now=Date.now(),i=waveIndex(now);return {now:now,i:i,w:waves[i],pre:i===0&&now<Date.parse(waves[0].open)}}
+
+  try{ if(CONFIG.PHOTO_URL){var im=new Image();im.alt="Anh Nguyễn Hải Đường";im.src=CONFIG.PHOTO_URL;im.onload=function(){$("portrait").appendChild(im)};} }catch(e){}
+
+  function render(){
+    var s=state(), w=s.w;
+    document.querySelectorAll("[data-plan]").forEach(function(el){el.textContent=fmt(w[el.dataset.plan])});
+    document.querySelectorAll("[data-save]").forEach(function(el){var d=official[el.dataset.save]-w[el.dataset.save];el.textContent=d>0?"Tiết kiệm "+fmt(d)+" so với giá chính thức":""});
+    document.querySelectorAll("#ladder tr").forEach(function(tr){var k=Number(tr.dataset.i);tr.classList.toggle("on",k===s.i);tr.classList.toggle("past",k<s.i)});
+    $("founderPerk").hidden = s.i!==0;
+    var slots=$("slots"); slots.hidden = s.i!==0; slots.textContent="Còn "+CONFIG.FOUNDING_SLOTS_LEFT+"/30 suất";
+    $("waveName").textContent = s.pre ? "Danh sách chờ · Đợt 1 mở bán 01/11" : w.name;
+    var target = s.pre ? Date.parse(waves[0].open) : (w.end ? Date.parse(w.end) : null);
+    $("count").hidden = !target;
+    if(target){
+      var sec=Math.max(0,Math.floor((target-s.now)/1000));
+      $("cd-d").textContent=Math.floor(sec/86400);
+      $("cd-h").textContent=Math.floor(sec%86400/3600);
+      $("cd-m").textContent=Math.floor(sec%3600/60);
+      $("waveEnd").textContent = s.pre ? "đến khi mở đợt 1" : "đến khi học phí tăng";
+    } else { $("waveEnd").textContent = "Khóa tiếp theo đang nhận đăng ký"; }
+    var endTxt = w.end ? w.end.slice(8,10)+"/"+w.end.slice(5,7) : "";
+    $("heroNote").innerHTML = s.pre
+      ? "Đăng ký ngay để giữ giá <b>Founding member</b> trước khi mở bán công khai 01/11."
+      : (w.end ? "Đang áp dụng <b>"+w.name+"</b>: Combo "+fmt(w.combo)+", học phí tăng sau 23:59 ngày "+endTxt+"." : "Đang áp dụng giá chính thức.");
+    $("barWave").textContent = s.pre ? "Danh sách chờ" : w.short+(w.end?" · đến "+endTxt:"");
+    $("barPrice").textContent = "Combo "+fmt(w.combo);
+    updateSum();
+  }
+  function updateSum(){
+    var w=state().w, p=$("plan").value, pay=$("pay").value;
+    $("sumLabel").textContent = pay==="deposit" ? "Đặt cọc hôm nay (học phí "+fmt(w[p])+")" : "Học phí "+planName[p];
+    $("sumPrice").textContent = fmt(pay==="deposit" ? CONFIG.DEPOSIT : w[p]);
+  }
+  render(); setInterval(render, 30000);
+  $("plan").addEventListener("change", updateSum);
+  $("pay").addEventListener("change", updateSum);
+  document.querySelectorAll("[data-pick]").forEach(function(a){a.addEventListener("click",function(){$("plan").value=a.dataset.pick;updateSum()})});
+
+  var bar=$("bar"), signup=$("dang-ky"), hero=document.querySelector(".hero");
+  if("IntersectionObserver" in window){
+    var heroOut=false, formIn=false;
+    var sync=function(){bar.classList.toggle("show", heroOut && !formIn)};
+    new IntersectionObserver(function(e){heroOut=!e[0].isIntersecting;sync()}).observe(hero);
+    new IntersectionObserver(function(e){formIn=e[0].isIntersecting;sync()}).observe(signup);
+  }
+
+  $("copyPhone").addEventListener("click", function(){
+    var b=this, t=CONFIG.ZALO_PHONE;
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent="Đã sao chép"},function(){selectText($("phoneText"))})}catch(e){selectText($("phoneText"))}
+  });
+  function selectText(el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}
+
+  var params={}; try{new URLSearchParams(location.search).forEach(function(v,k){params[k]=v})}catch(e){}
+
+  $("f").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name=$("name").value.trim(), phone=$("phone").value.replace(/\D/g,""), err=$("err");
+    if(!name){err.textContent="Vui lòng nhập họ và tên.";$("name").focus();return}
+    if(phone.length<9||phone.length>11){err.textContent="Số Zalo cần 9–11 chữ số, ví dụ 0906968377.";$("phone").focus();return}
+    err.textContent="";
+    var s=state(), p=$("plan").value, pay=$("pay").value, amount = pay==="deposit" ? CONFIG.DEPOSIT : s.w[p];
+    var code="HDA"+phone.slice(-6)+p.toUpperCase();
+    var data={time:new Date().toISOString(), name:name, phone:phone, plan:planName[p], price:s.w[p], pay:pay==="deposit"?"Đặt cọc":"Toàn bộ", amount:amount, wave:s.pre?"Danh sách chờ":s.w.name, segment:$("seg").value, code:code,
+      utm_source:params.utm_source||"", utm_medium:params.utm_medium||"", utm_campaign:params.utm_campaign||"", ref:params.ref||""};
+    var btn=$("submitBtn"); btn.disabled=true; btn.textContent="Đang gửi…";
+    var finish=function(saved){ showDone(data, saved); };
+    if(CONFIG.SHEET_URL){
+      fetch(CONFIG.SHEET_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(data)}).then(function(){finish(true)},function(){finish(false)});
+    } else { finish(false); }
+  });
+
+  function showDone(d, saved){
+    $("f").hidden=true;
+    var box=$("done"); box.hidden=false; box.innerHTML="";
+    var h=document.createElement("h3"); h.textContent="Cảm ơn "+d.name+(d.wave==="Danh sách chờ"?", bạn đã vào danh sách chờ đợt 1":", bạn đã giữ chỗ "+d.wave); box.appendChild(h);
+    var p1=document.createElement("p"); p1.textContent=d.plan+" · học phí "+fmt(d.price)+". Bước tiếp theo: chuyển "+fmt(d.amount)+" với nội dung bên dưới để xác nhận suất học."; box.appendChild(p1);
+    var r=document.createElement("div"); r.className="row"; r.innerHTML='<span>Nội dung chuyển khoản:</span>'; var c=document.createElement("span"); c.className="code"; c.textContent=d.code; r.appendChild(c); box.appendChild(r);
+    if(CONFIG.BANK_BIN && CONFIG.BANK_ACCOUNT){
+      var img=document.createElement("img"); img.alt="Mã VietQR chuyển khoản học phí";
+      img.src="https://img.vietqr.io/image/"+encodeURIComponent(CONFIG.BANK_BIN)+"-"+encodeURIComponent(CONFIG.BANK_ACCOUNT)+"-compact2.png?amount="+d.amount+"&addInfo="+encodeURIComponent(d.code)+"&accountName="+encodeURIComponent(CONFIG.BANK_NAME);
+      img.onerror=function(){img.remove()}; box.appendChild(img);
+    } else {
+      var p2=document.createElement("p"); p2.textContent="Đội ngũ sẽ gửi mã VietQR qua Zalo cho bạn trong 2 giờ làm việc."; box.appendChild(p2);
+    }
+    var z=document.createElement("div"); z.className="row";
+    var a=document.createElement("a"); a.className="btn"; a.href="https://zalo.me/"+CONFIG.ZALO_PHONE; a.target="_blank"; a.rel="noopener"; a.textContent="Nhắn Zalo xác nhận";
+    var n=document.createElement("span"); n.innerHTML='hoặc lưu số <b class="code">'+CONFIG.ZALO_PHONE.replace(/(\d{3})(\d{3})(\d+)/,"$1 $2 $3")+'</b>';
+    z.appendChild(a); z.appendChild(n); box.appendChild(z);
+    if(!saved){var pv=document.createElement("p"); pv.className="preview"; pv.textContent="Trang chưa nối Google Sheets nên thông tin này chưa được lưu. Vui lòng nhắn Zalo để giữ chỗ."; box.appendChild(pv);}
+    box.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+})();
+</script>
+</body>
+</html>

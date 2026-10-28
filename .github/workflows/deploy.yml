@@ -1,0 +1,50 @@
+# Mỗi lần push lên main: kiểm tra kiểu + build thử; qua thì SSH vào VPS chạy deploy/deploy.sh.
+# Cần 3 secret trong repo (Settings → Secrets and variables → Actions):
+#   VPS_HOST     IP hoặc tên miền VPS
+#   VPS_SSH_KEY  khóa riêng (private key) của user deploy trên VPS, xem README mục "Deploy tự động"
+#   VPS_PORT     (không bắt buộc) cổng SSH, mặc định 22
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          SESSION_SECRET: ci-only-secret-not-used-in-production-000000
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chạy deploy trên VPS
+        env:
+          HOST: ${{ secrets.VPS_HOST }}
+          PORT: ${{ secrets.VPS_PORT || '22' }}
+          KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          if [ -z "$HOST" ] || [ -z "$KEY" ]; then
+            echo "Chưa cấu hình VPS_HOST / VPS_SSH_KEY: bỏ qua bước deploy."
+            exit 0
+          fi
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh -i ~/.ssh/id_deploy -p "$PORT" "deploy@$HOST" 'bash /var/www/haiduong/app/deploy/deploy.sh'

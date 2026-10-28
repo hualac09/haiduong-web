@@ -1,0 +1,35 @@
+{
+  "name": "haiduong-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website Hải Đường: môi giới BĐS cao cấp và Hải Đường Academy",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p ${PORT:-3000}",
+    "lint": "tsc --noEmit",
+    "seed": "node scripts/seed.ts",
+    "admin:password": "node scripts/hash-password.mjs"
+  },
+  "dependencies": {
+    "jose": "^6.2.13",
+    "marked": "^18.1.2",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sanitize-html": "^2.18.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/sanitize-html": "^2.16.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

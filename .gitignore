@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+data/*.db
+data/*.db-*
+data/uploads/
+.env
+.env.local
+*.log
+next-env.d.ts
+tsconfig.tsbuildinfo
+data/dev-admin.txt
+.next-build/
+.next-old/
+backups/
