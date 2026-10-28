@@ -3,29 +3,47 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-/** Gắn class is-in cho mọi .reveal khi cuộn tới. Chạy lại mỗi lần đổi trang. */
+/**
+ * Gắn class is-in cho mọi .reveal khi cuộn tới. Đo vị trí trực tiếp thay vì IntersectionObserver,
+ * vì IO không báo khi trình duyệt chưa vẽ khung hình (tab nền, cửa sổ bị che) và khối sẽ ẩn mãi.
+ * MutationObserver bắt cả nội dung đổ vào sau (chuyển trang, streaming).
+ */
 export function RevealObserver() {
   const pathname = usePathname();
   useEffect(() => {
-    document.documentElement.classList.add("js");
-    const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)"));
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((e) => e.classList.add("is-in"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const en of entries) {
-          if (en.isIntersecting) {
-            en.target.classList.add("is-in");
-            io.unobserve(en.target);
-          }
-        }
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
-    );
-    els.forEach((e) => io.observe(e));
-    return () => io.disconnect();
+    const root = document.documentElement;
+    root.classList.add("js");
+    let timer = 0;
+    const check = () => {
+      timer = 0;
+      const limit = window.innerHeight * 0.92;
+      const pending = document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)");
+      pending.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < limit && r.bottom > 0) el.classList.add("is-in");
+        else if (r.bottom <= 0) el.classList.add("is-in"); // đã cuộn qua (ví dụ mở bằng #anchor)
+      });
+      return pending.length;
+    };
+    const schedule = () => {
+      if (!timer) timer = window.setTimeout(check, 60);
+    };
+    check();
+    const mo = new MutationObserver(schedule);
+    mo.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    // Lưới an toàn: sự kiện cuộn chỉ phát khi trình duyệt đang vẽ; kiểm tra định kỳ đến khi hiện hết.
+    const safety = window.setInterval(() => {
+      if (check() === 0) clearInterval(safety);
+    }, 500);
+    return () => {
+      mo.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      clearTimeout(timer);
+      clearInterval(safety);
+    };
   }, [pathname]);
   return null;
 }
