@@ -134,7 +134,8 @@ export function MoreLink({ href, children, tone = "light" }: { href: string; chi
   );
 }
 
-export function VideoCard({ id, title, meta }: { id: string; title: string; meta?: string }) {
+/** `image`: ảnh sạch (không chữ chèn) thay cho ảnh bìa YouTube. */
+export function VideoCard({ id, title, meta, image }: { id: string; title: string; meta?: string; image?: string }) {
   return (
     <a
       href={`https://www.youtube.com/watch?v=${id}`}
@@ -144,7 +145,7 @@ export function VideoCard({ id, title, meta }: { id: string; title: string; meta
     >
       <div className="chamfer relative aspect-video overflow-hidden bg-ink-3">
         <Image
-          src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
+          src={image ?? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
           alt=""
           fill
           sizes="(min-width: 1024px) 33vw, 100vw"

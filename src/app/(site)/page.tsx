@@ -32,9 +32,9 @@ const services = [
 ];
 
 const videos = [
-  { id: "ASN0_1hxNEE", title: "Biệt thự 560 tỷ tại Vinhomes Golden River Ba Son", meta: "39K lượt xem" },
-  { id: "KgMHE_Lw15Q", title: "Penthouse Gateway Thảo Điền không thua kém New York", meta: "26K lượt xem" },
-  { id: "KJ7cADB4410", title: "Tổng quan Lotte Eco Smart City Thủ Thiêm 2026", meta: "Cập nhật dự án" },
+  { id: "ASN0_1hxNEE", title: "Biệt thự 560 tỷ tại Vinhomes Golden River Ba Son", meta: "39K lượt xem", image: "/images/can/biet-thu-vinhomes-golden-river-ba-son-560-ty/01.webp" },
+  { id: "KgMHE_Lw15Q", title: "Penthouse Gateway Thảo Điền không thua kém New York", meta: "26K lượt xem", image: "/images/can/penthouse-gateway-thao-dien-118-ty/02.webp" },
+  { id: "KJ7cADB4410", title: "Tổng quan Lotte Eco Smart City Thủ Thiêm 2026", meta: "Cập nhật dự án", image: "/images/goc-nhin/song-sai-gon.webp" },
 ];
 
 export default function Home() {
@@ -46,12 +46,12 @@ export default function Home() {
       {/* 1. Hero toàn màn hình */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink-2 text-white">
         <Image
-          src="/images/hero-zeit-river.jpg"
-          alt="Anh Hải Đường trên sân thượng penthouse Zeit River nhìn ra sông Sài Gòn lúc hoàng hôn"
+          src="/images/hero-hoang-hon.webp"
+          alt="Anh Hải Đường trên sân thượng penthouse Zeit River, phía sau là Thủ Thiêm và sông Sài Gòn lúc hoàng hôn"
           fill
           priority
           sizes="100vw"
-          className="hero-media -z-20 object-cover object-[72%_center]"
+          className="hero-media -z-20 object-cover object-[60%_center]"
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(10_28_24/0.55)_0%,rgb(10_28_24/0.25)_40%,rgb(10_28_24/0.92)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(10_28_24/0.7)_0%,rgb(10_28_24/0.2)_55%,transparent_75%)]" />
@@ -274,7 +274,7 @@ export default function Home() {
 
       {/* 9. Kêu gọi cuối */}
       <section className="relative isolate overflow-hidden bg-ink text-white">
-        <Image src="/images/the-river-dem.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover" />
+        <Image src="/images/ban-cong-dem.webp" alt="" fill sizes="100vw" className="-z-20 object-cover" />
         <div className="absolute inset-0 -z-10 bg-ink-2/80" />
         <div className="wrap flex min-h-[70vh] flex-col justify-center py-24">
           <p className="label reveal text-gold">Trao đổi riêng</p>

@@ -68,9 +68,9 @@ export default async function ListingPage({ params }: { params: Params }) {
       <section className="bg-paper py-16 md:py-24">
         <div className="wrap grid gap-16 lg:grid-cols-[1.6fr_1fr]">
           <div>
-            <dl className="grid grid-cols-2 gap-px bg-line sm:grid-cols-3">
+            <dl className="grid grid-cols-2 border-t border-l border-line sm:grid-cols-3">
               {facts.map(([k, v]) => (
-                <div key={k} className="bg-paper p-5">
+                <div key={k} className="border-r border-b border-line p-5">
                   <dt className="label !text-[0.65rem] text-muted">{k}</dt>
                   <dd className="mt-2 text-lg font-light">{v}</dd>
                 </div>
@@ -97,11 +97,15 @@ export default async function ListingPage({ params }: { params: Params }) {
 
             {gallery.length > 0 && (
               <div className="mt-14 grid gap-3 sm:grid-cols-2">
-                {gallery.map((src, i) => (
-                  <div key={src} className={`relative overflow-hidden bg-mist ${i % 3 === 0 ? "aspect-[16/10] sm:col-span-2" : "aspect-[4/3]"}`}>
+                {gallery.map((src, i) => {
+                  // Nhịp 1 ảnh rộng + 2 ảnh nửa hàng; ảnh cuối lẻ thì cho rộng hết hàng.
+                  const wide = i % 3 === 0 || (i === gallery.length - 1 && i % 3 === 1);
+                  return (
+                  <div key={src} className={`relative overflow-hidden bg-mist ${wide ? "aspect-[16/9] sm:col-span-2" : "aspect-[4/3]"}`}>
                     <Image src={src} alt={`${l.title}, ảnh ${i + 1}`} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

@@ -50,11 +50,11 @@ export default function AboutPage() {
         <div className="wrap grid items-center gap-14 lg:grid-cols-2">
           <div className="chamfer chamfer-lg reveal relative aspect-[4/5] overflow-hidden bg-ink">
             <Image
-              src="/images/gateway-thao-dien.jpg"
-              alt="Anh Hải Đường dẫn khách xem penthouse Gateway Thảo Điền"
+              src="/images/chan-dung-landmark.webp"
+              alt="Anh Hải Đường giới thiệu tầm nhìn từ penthouse Zeit River về phía Landmark 81"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-[68%_center]"
+              className="object-cover object-[62%_center]"
             />
           </div>
           <div>
@@ -134,9 +134,9 @@ export default function AboutPage() {
         <div className="wrap">
           <p className="label text-gold">Xem anh Đường làm việc</p>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
-            <VideoCard id="rjCOJFgHozs" title="Penthouse The Opera Thủ Thiêm 250 tỷ" meta="Thủ Thiêm" />
-            <VideoCard id="LOp41yAgoac" title="Pool Villa The River Thủ Thiêm 120 tỷ" meta="Thủ Thiêm" />
-            <VideoCard id="XIHD5oEDJao" title="Tiến độ khu đô thị Thủ Thiêm 2026" meta="Cập nhật dự án" />
+            <VideoCard id="rjCOJFgHozs" title="Penthouse The Opera Thủ Thiêm 250 tỷ" meta="Thủ Thiêm" image="/images/can/penthouse-the-opera-thu-thiem-250-ty/01.webp" />
+            <VideoCard id="LOp41yAgoac" title="Pool Villa The River Thủ Thiêm 120 tỷ" meta="Thủ Thiêm" image="https://i.ytimg.com/vi/LOp41yAgoac/maxres1.jpg" />
+            <VideoCard id="XIHD5oEDJao" title="Tiến độ khu đô thị Thủ Thiêm 2026" meta="Cập nhật dự án" image="/images/goc-nhin/thu-thiem-tren-cao.webp" />
           </div>
           <div className="mt-16 flex flex-wrap gap-3">
             <Link href="/dat-lich" className="btn btn-gold">

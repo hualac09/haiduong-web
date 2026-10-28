@@ -216,10 +216,21 @@ const listings: L[] = [
   },
 ];
 
+// Ảnh 4K cắt từ video (scripts/make-images.mjs): phần tử đầu là ảnh bìa, còn lại là thư viện ảnh.
+// Căn nào có ít hơn 3 ảnh thì giữ ảnh bìa khung hình YouTube và đưa hết ảnh mới vào thư viện.
+const IMAGES: Record<string, string[]> = JSON.parse(
+  fs.readFileSync(new URL("./listing-images.json", import.meta.url), "utf8"),
+);
+function imagesFor(l: L): { cover: string; gallery: string[] } {
+  const imgs = IMAGES[l.slug] ?? [];
+  const yt = `https://i.ytimg.com/vi/${l.youtube_id}/maxres${l.frame}.jpg`;
+  return imgs.length >= 3 ? { cover: imgs[0], gallery: imgs.slice(1) } : { cover: yt, gallery: imgs };
+}
+
 if (empty("listings")) {
   const ins = db.prepare(
-    `INSERT INTO listings (slug, title, project, district, kind, status, price_label, price_billion, area_m2, bedrooms, summary, body, cover, youtube_id, featured, sort)
-     VALUES (?, ?, ?, ?, ?, 'da-gioi-thieu', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO listings (slug, title, project, district, kind, status, price_label, price_billion, area_m2, bedrooms, summary, body, cover, gallery, youtube_id, featured, sort)
+     VALUES (?, ?, ?, ?, ?, 'da-gioi-thieu', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   );
   listings.forEach((l, i) =>
     ins.run(
@@ -234,7 +245,8 @@ if (empty("listings")) {
       l.bedrooms ?? null,
       l.summary,
       l.summary + NOTE,
-      `https://i.ytimg.com/vi/${l.youtube_id}/maxres${l.frame}.jpg`,
+      imagesFor(l).cover,
+      JSON.stringify(imagesFor(l).gallery),
       l.youtube_id,
       l.featured ? 1 : 0,
       i,
@@ -288,7 +300,7 @@ Nguồn cung căn hộ mới có thể đạt 7.000–10.000 căn; nhu cầu cu�
 3. Ưu tiên dự án pháp lý rõ, hạ tầng kết nối và thanh khoản tốt.
 
 *Nguồn: báo cáo DKRA quý III/2026, Vnbusiness, Báo Mới, Vietstock. Thông tin tham khảo, không phải khuyến nghị đầu tư.*`,
-    "https://i.ytimg.com/vi/XIHD5oEDJao/maxres2.jpg",
+    "/images/goc-nhin/thu-thiem-tren-cao.webp",
     "Thị trường",
     1,
     "2026-10-16 09:00:00",
@@ -308,7 +320,7 @@ Khi giá sơ cấp và thứ cấp lệch nhau, căn chuyển nhượng trong c�
 Bạn đang thấy chênh lệch này ở dự án nào? Đặt lịch trao đổi, tôi sẽ so sánh giúp bạn trên dữ liệu thật của từng căn.
 
 *Nguồn: VnExpress (15/10/2026), số liệu VARS và phát biểu của Bộ Xây dựng. Thông tin tham khảo, không phải khuyến nghị đầu tư.*`,
-    "https://i.ytimg.com/vi/KJ7cADB4410/maxres3.jpg",
+    "/images/goc-nhin/hoi-thao-lotte.webp",
     "Thị trường",
     1,
     "2026-10-17 09:00:00",
